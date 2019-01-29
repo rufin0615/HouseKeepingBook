@@ -28,17 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
-            this.textItem = new System.Windows.Forms.TextBox();
+            this.txtItem = new System.Windows.Forms.TextBox();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.mtxtMoney = new System.Windows.Forms.MaskedTextBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.categoryDataSet = new MyHousekeepingBook.CategoryDataSet();
+            this.categoryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // monthCalendar
@@ -85,6 +90,8 @@
             // 
             // cmbCategory
             // 
+            this.cmbCategory.DataSource = this.categoryDataTableBindingSource;
+            this.cmbCategory.DisplayMember = "分類";
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(286, 24);
@@ -92,12 +99,12 @@
             this.cmbCategory.Size = new System.Drawing.Size(121, 20);
             this.cmbCategory.TabIndex = 2;
             // 
-            // textItem
+            // txtItem
             // 
-            this.textItem.Location = new System.Drawing.Point(286, 53);
-            this.textItem.Name = "textItem";
-            this.textItem.Size = new System.Drawing.Size(100, 19);
-            this.textItem.TabIndex = 3;
+            this.txtItem.Location = new System.Drawing.Point(286, 53);
+            this.txtItem.Name = "txtItem";
+            this.txtItem.Size = new System.Drawing.Size(100, 19);
+            this.txtItem.TabIndex = 3;
             // 
             // txtRemarks
             // 
@@ -135,6 +142,16 @@
             this.buttonCancel.Text = "キャンセル";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // categoryDataSet
+            // 
+            this.categoryDataSet.DataSetName = "CategoryDataSet";
+            this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoryDataTableBindingSource
+            // 
+            this.categoryDataTableBindingSource.DataMember = "CategoryDataTable";
+            this.categoryDataTableBindingSource.DataSource = this.categoryDataSet;
+            // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -144,7 +161,7 @@
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.mtxtMoney);
             this.Controls.Add(this.txtRemarks);
-            this.Controls.Add(this.textItem);
+            this.Controls.Add(this.txtItem);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -153,6 +170,8 @@
             this.Controls.Add(this.monthCalendar);
             this.Name = "ItemForm";
             this.Text = "登録";
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,8 +186,10 @@
         private System.Windows.Forms.Button buttonCancel;
         public System.Windows.Forms.MonthCalendar monthCalendar;
         public System.Windows.Forms.ComboBox cmbCategory;
-        public System.Windows.Forms.TextBox textItem;
+        public System.Windows.Forms.TextBox txtItem;
         public System.Windows.Forms.TextBox txtRemarks;
         public System.Windows.Forms.MaskedTextBox mtxtMoney;
+        private CategoryDataSet categoryDataSet;
+        private System.Windows.Forms.BindingSource categoryDataTableBindingSource;
     }
 }
