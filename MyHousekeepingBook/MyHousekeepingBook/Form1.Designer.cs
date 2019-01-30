@@ -57,11 +57,26 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonEnd = new System.Windows.Forms.Button();
             this.categoryDataSet1 = new MyHousekeepingBook.CategoryDataSet();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabList = new System.Windows.Forms.TabPage();
+            this.tabSummary = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.summaryDataSet = new MyHousekeepingBook.SummaryDataSet();
+            this.sumDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.日付DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.入金合計DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.出金合計DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDateTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moneyDataSet)).BeginInit();
             this.mainMenue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabList.SuspendLayout();
+            this.tabSummary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.summaryDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sumDataTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv
@@ -75,10 +90,10 @@
             this.金額DataGridViewTextBoxColumn,
             this.備考DataGridViewTextBoxColumn});
             this.dgv.DataSource = this.moneyDateTableBindingSource;
-            this.dgv.Location = new System.Drawing.Point(12, 40);
+            this.dgv.Location = new System.Drawing.Point(6, 6);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 21;
-            this.dgv.Size = new System.Drawing.Size(776, 340);
+            this.dgv.Size = new System.Drawing.Size(546, 194);
             this.dgv.TabIndex = 0;
             // 
             // 日付DataGridViewTextBoxColumn
@@ -131,7 +146,7 @@
             this.ヘルプHToolStripMenuItem});
             this.mainMenue.Location = new System.Drawing.Point(0, 0);
             this.mainMenue.Name = "mainMenue";
-            this.mainMenue.Size = new System.Drawing.Size(800, 24);
+            this.mainMenue.Size = new System.Drawing.Size(589, 24);
             this.mainMenue.TabIndex = 1;
             this.mainMenue.Text = "menuStrip1";
             // 
@@ -182,21 +197,23 @@
             // 追加AToolStripMenuItem
             // 
             this.追加AToolStripMenuItem.Name = "追加AToolStripMenuItem";
-            this.追加AToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.追加AToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.追加AToolStripMenuItem.Text = "追加(&A)";
             this.追加AToolStripMenuItem.Click += new System.EventHandler(this.追加AToolStripMenuItem_Click);
             // 
             // 変更CToolStripMenuItem
             // 
             this.変更CToolStripMenuItem.Name = "変更CToolStripMenuItem";
-            this.変更CToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.変更CToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.変更CToolStripMenuItem.Text = "変更(&C)";
+            this.変更CToolStripMenuItem.Click += new System.EventHandler(this.変更CToolStripMenuItem_Click);
             // 
             // 削除DToolStripMenuItem
             // 
             this.削除DToolStripMenuItem.Name = "削除DToolStripMenuItem";
-            this.削除DToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.削除DToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.削除DToolStripMenuItem.Text = "削除(&D)";
+            this.削除DToolStripMenuItem.Click += new System.EventHandler(this.削除DToolStripMenuItem_Click);
             // 
             // 表示VToolStripMenuItem
             // 
@@ -235,7 +252,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(13, 399);
+            this.buttonAdd.Location = new System.Drawing.Point(6, 217);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(103, 26);
             this.buttonAdd.TabIndex = 2;
@@ -245,21 +262,23 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(136, 399);
+            this.buttonChange.Location = new System.Drawing.Point(129, 217);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(103, 26);
             this.buttonChange.TabIndex = 2;
             this.buttonChange.Text = "変更";
             this.buttonChange.UseVisualStyleBackColor = true;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(263, 399);
+            this.buttonDelete.Location = new System.Drawing.Point(256, 217);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(103, 26);
             this.buttonDelete.TabIndex = 2;
             this.buttonDelete.Text = "削除";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonEnd
             // 
@@ -276,16 +295,91 @@
             this.categoryDataSet1.DataSetName = "CategoryDataSet";
             this.categoryDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabList);
+            this.tabControl1.Controls.Add(this.tabSummary);
+            this.tabControl1.Location = new System.Drawing.Point(12, 27);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(571, 324);
+            this.tabControl1.TabIndex = 3;
+            // 
+            // tabList
+            // 
+            this.tabList.Controls.Add(this.dgv);
+            this.tabList.Controls.Add(this.buttonAdd);
+            this.tabList.Controls.Add(this.buttonDelete);
+            this.tabList.Controls.Add(this.buttonChange);
+            this.tabList.Location = new System.Drawing.Point(4, 22);
+            this.tabList.Name = "tabList";
+            this.tabList.Padding = new System.Windows.Forms.Padding(3);
+            this.tabList.Size = new System.Drawing.Size(563, 298);
+            this.tabList.TabIndex = 0;
+            this.tabList.Text = "一覧表示";
+            this.tabList.UseVisualStyleBackColor = true;
+            // 
+            // tabSummary
+            // 
+            this.tabSummary.Controls.Add(this.dataGridView1);
+            this.tabSummary.Location = new System.Drawing.Point(4, 22);
+            this.tabSummary.Name = "tabSummary";
+            this.tabSummary.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSummary.Size = new System.Drawing.Size(563, 298);
+            this.tabSummary.TabIndex = 1;
+            this.tabSummary.Text = "集計表示";
+            this.tabSummary.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.日付DataGridViewTextBoxColumn1,
+            this.入金合計DataGridViewTextBoxColumn,
+            this.出金合計DataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.sumDataTableBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(7, 7);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 21;
+            this.dataGridView1.Size = new System.Drawing.Size(550, 285);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // summaryDataSet
+            // 
+            this.summaryDataSet.DataSetName = "SummaryDataSet";
+            this.summaryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sumDataTableBindingSource
+            // 
+            this.sumDataTableBindingSource.DataMember = "SumDataTable";
+            this.sumDataTableBindingSource.DataSource = this.summaryDataSet;
+            // 
+            // 日付DataGridViewTextBoxColumn1
+            // 
+            this.日付DataGridViewTextBoxColumn1.DataPropertyName = "日付";
+            this.日付DataGridViewTextBoxColumn1.HeaderText = "日付";
+            this.日付DataGridViewTextBoxColumn1.Name = "日付DataGridViewTextBoxColumn1";
+            // 
+            // 入金合計DataGridViewTextBoxColumn
+            // 
+            this.入金合計DataGridViewTextBoxColumn.DataPropertyName = "入金合計";
+            this.入金合計DataGridViewTextBoxColumn.HeaderText = "入金合計";
+            this.入金合計DataGridViewTextBoxColumn.Name = "入金合計DataGridViewTextBoxColumn";
+            // 
+            // 出金合計DataGridViewTextBoxColumn
+            // 
+            this.出金合計DataGridViewTextBoxColumn.DataPropertyName = "出金合計";
+            this.出金合計DataGridViewTextBoxColumn.HeaderText = "出金合計";
+            this.出金合計DataGridViewTextBoxColumn.Name = "出金合計DataGridViewTextBoxColumn";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(589, 369);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.buttonEnd);
-            this.Controls.Add(this.buttonDelete);
-            this.Controls.Add(this.buttonChange);
-            this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.dgv);
             this.Controls.Add(this.mainMenue);
             this.Name = "Form1";
             this.Text = "簡易家計簿";
@@ -297,6 +391,12 @@
             this.mainMenue.ResumeLayout(false);
             this.mainMenue.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabList.ResumeLayout(false);
+            this.tabSummary.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.summaryDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sumDataTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,6 +432,15 @@
         private System.Windows.Forms.BindingSource moneyDateTableBindingSource;
         private MoneyDataSet moneyDataSet;
         private CategoryDataSet categoryDataSet1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabList;
+        private System.Windows.Forms.TabPage tabSummary;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 日付DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 入金合計DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 出金合計DataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource sumDataTableBindingSource;
+        private SummaryDataSet summaryDataSet;
     }
 }
 

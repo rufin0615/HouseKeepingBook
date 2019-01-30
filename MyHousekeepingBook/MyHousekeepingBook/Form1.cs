@@ -125,5 +125,56 @@ namespace MyHousekeepingBook
 
 
         }
+        private void UpdateData()
+        {
+            int nowRow = dgv.CurrentRow.Index;
+            DateTime oldDate = DateTime.Parse(dgv.Rows[nowRow].Cells[0].Value.ToString());
+            string oldCategory = dgv.Rows[nowRow].Cells[1].Value.ToString();
+            string oldItem = dgv.Rows[nowRow].Cells[2].Value.ToString();
+            int oldMoney = int.Parse(dgv.Rows[nowRow].Cells[3].Value.ToString());
+            string oldRemarks = dgv.Rows[nowRow].Cells[4].Value.ToString();
+            ItemForm frmItem = new ItemForm(categoryDataSet1,
+                oldDate,
+                oldCategory,
+                oldItem,
+                oldMoney,
+                oldRemarks);
+
+            DialogResult drRet = frmItem.ShowDialog();
+            if(drRet == DialogResult.OK)
+            {
+                dgv.Rows[nowRow].Cells[0].Value = frmItem.monthCalendar.SelectionRange.Start;
+                dgv.Rows[nowRow].Cells[1].Value = frmItem.cmbCategory.Text;
+                dgv.Rows[nowRow].Cells[2].Value = frmItem.txtItem.Text;
+                dgv.Rows[nowRow].Cells[3].Value = int.Parse(frmItem.mtxtMoney.Text);
+                dgv.Rows[nowRow].Cells[4].Value = frmItem.txtRemarks.Text;
+            }
+        }
+
+        private void buttonChange_Click(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void 変更CToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateData();
+        }
+
+        private void DeleteDate()
+        {
+            int nowRow = dgv.CurrentRow.Index;
+            dgv.Rows.RemoveAt(nowRow);
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            DeleteDate();
+        }
+
+        private void 削除DToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteDate();
+        }
     }
 }

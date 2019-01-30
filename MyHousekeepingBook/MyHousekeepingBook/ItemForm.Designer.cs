@@ -35,15 +35,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.categoryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.categoryDataSet = new MyHousekeepingBook.CategoryDataSet();
             this.txtItem = new System.Windows.Forms.TextBox();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.mtxtMoney = new System.Windows.Forms.MaskedTextBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.categoryDataSet = new MyHousekeepingBook.CategoryDataSet();
-            this.categoryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // monthCalendar
@@ -99,6 +99,16 @@
             this.cmbCategory.Size = new System.Drawing.Size(121, 20);
             this.cmbCategory.TabIndex = 2;
             // 
+            // categoryDataTableBindingSource
+            // 
+            this.categoryDataTableBindingSource.DataMember = "CategoryDataTable";
+            this.categoryDataTableBindingSource.DataSource = this.categoryDataSet;
+            // 
+            // categoryDataSet
+            // 
+            this.categoryDataSet.DataSetName = "CategoryDataSet";
+            this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // txtItem
             // 
             this.txtItem.Location = new System.Drawing.Point(286, 53);
@@ -142,16 +152,6 @@
             this.buttonCancel.Text = "キャンセル";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // categoryDataSet
-            // 
-            this.categoryDataSet.DataSetName = "CategoryDataSet";
-            this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // categoryDataTableBindingSource
-            // 
-            this.categoryDataTableBindingSource.DataMember = "CategoryDataTable";
-            this.categoryDataTableBindingSource.DataSource = this.categoryDataSet;
-            // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -170,8 +170,8 @@
             this.Controls.Add(this.monthCalendar);
             this.Name = "ItemForm";
             this.Text = "登録";
-            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
